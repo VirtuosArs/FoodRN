@@ -5,6 +5,7 @@ import { MonoText } from '../components/StyledText';
 
 
 export default function HomeScreen() {
+  // const {navigate} = this.props.navigation;
   return (
     <View style={styles.container}>
       <ScrollView
@@ -25,6 +26,10 @@ export default function HomeScreen() {
           <DevelopmentModeNotice />
 
           <Text style={styles.getStartedText}>Ars Get started by opening</Text>
+          {/* <Button
+          onPress={() => navigate('Recipe')}
+          title="Go to Recipe"
+          /> */}
 
           <View
             style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
@@ -62,7 +67,8 @@ export default function HomeScreen() {
 }
 
 HomeScreen.navigationOptions = {
-  header: null,
+  // header: null,
+  title: 'Recipes'
 };
 
 function DevelopmentModeNotice() {

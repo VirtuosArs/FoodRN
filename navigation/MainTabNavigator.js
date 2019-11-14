@@ -1,10 +1,13 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
-
+import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
+import Colors from '../constants/Colors';
 import LinksScreen from '../screens/LinksScreen';
+// import HomeScreen from '../screens/HomeScreen';
+import HomeScreen from '../screens/NewHomeScreen';
+import RecipeScreen from '../screens/RecipeScreen';
+import SelectedRecipeScreen from '../screens/SelectedMenu';
 import SettingsScreen from '../screens/SettingsScreen';
 
 const config = Platform.select({
@@ -15,12 +18,23 @@ const config = Platform.select({
 const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
+    Recipe: RecipeScreen,
+    SelectRecipe: SelectedRecipeScreen,
   },
-  config
+  // config,
+  {defaultNavigationOptions: {
+    headerStyle: {
+      backgroundColor: Colors.primaryColor,
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  }},
 );
 
 HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+  tabBarLabel: null,
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -43,7 +57,7 @@ const LinksStack = createStackNavigator(
 );
 
 LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+  tabBarLabel: null,
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
   ),
@@ -70,7 +84,13 @@ SettingsStack.path = '';
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
   LinksStack,
-  SettingsStack,
+  // SettingsStack,
+  },{
+    tabBarLabel: '',
+    tabBarOptions: {
+        activeTintColor: Colors.primaryColor,
+        showLabel: false,
+  }      
 });
 
 tabNavigator.path = '';
