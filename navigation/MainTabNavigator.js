@@ -7,6 +7,7 @@ import Colors from '../constants/Colors';
 // import HomeScreen from '../screens/HomeScreen';
 import HomeScreen from '../screens/NewHomeScreen';
 import RecipeScreen from '../screens/RecipeScreen';
+import RestaurantDetailScreen from '../screens/RestaurantDetail';
 import RestaurantScreen from '../screens/RestaurantScreen';
 import SelectedRecipeScreen from '../screens/SelectedMenu';
 import SettingsScreen from '../screens/SettingsScreen';
@@ -56,6 +57,7 @@ HomeStack.path = '';
 const LinksStack = createStackNavigator(
   {
     Restaurant: RestaurantScreen,
+    RestaurantDetail: RestaurantDetailScreen,
   },
   // config,
   {defaultNavigationOptions: {

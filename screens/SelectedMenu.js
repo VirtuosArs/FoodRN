@@ -1,10 +1,12 @@
 import { FontAwesome, Ionicons, MaterialIcons } from '@expo/vector-icons';
-import { Button, H1, Right, Text } from 'native-base';
+import { Body, Button, Card, CardItem, Content, H1, Right, Text } from 'native-base';
 import React, { Component } from 'react';
 import { Animated, Dimensions, ImageBackground, Platform, StatusBar, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Colors from '../constants/Colors';
 import Styles from '../styles/stylesDetails';
+import Faded from '../utils/faded';
+import ImgUtils from "../utils/helper";
 
 const { width, height } = Dimensions.get('window');
 
@@ -111,7 +113,7 @@ class SelectedMenu extends Component {
 
   render() {
       const {navigation} = this.props;
-      const {name, people, min} = navigation.state.params;
+      const {name, people, min, img} = navigation.state.params;
     return (
         <View style={{flex: 1, 
             }}>
@@ -119,11 +121,14 @@ class SelectedMenu extends Component {
             backgroundColor: this.state.backgroundColor}}>
         <ImageBackground
         style={Styles.backgroundImage}
-        source={require('../assets/images/recipe/2.jpg')}
+        // source={require('../assets/images/recipe/2.jpg')}
+        source={ImgUtils.imageSelect(img)}
     >
     <StatusBar barStyle="light-content" backgroundColor="transparent" translucent={true}/>
+    <Faded color="#000000" height={50}>
     <View style={{position: 'absolute', left: 20, right: 0, top: 150, justifyContent: 'flex-start', alignItems: 'flex-start'}}>
       <H1 style={{color:"#fff"}}>{name}</H1></View>
+    </Faded>
     </ImageBackground>
         </View>
     <View style={{flex: 2.5, height: 100,  opacity: this.state.opacity,
@@ -153,8 +158,77 @@ class SelectedMenu extends Component {
           ><Text style={{textTransform: 'capitalize'}}>See Ingredients</Text></Button>
     {/* </TouchableOpacity> */}
     </View>
-    <View style={{height: '86%'}}>
-
+    <View style={{height: '5%'}}></View>
+    <View style={{height: '81%'}}>
+    {/* <Container> */}
+    <Content padder>
+    <Card>
+            {/* <CardItem header bordered>
+              <Text>NativeBase</Text>
+            </CardItem> */}
+            <CardItem bordered>
+              <Body>
+              <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', padding: 10}}>
+                <View style={{alignSelf: 'flex-start', justifyContent: 'flex-start', alignItems: 'flex-start', width: '10%'}}> 
+                    <Text style={{color: 'gray'}}>1 </Text>
+                </View>
+                <View style={{alignSelf: 'flex-start', justifyContent: 'flex-start', alignItems: 'flex-start', width: '90%'}}>
+                <Text>
+                  Oil the Waffle maker
+                </Text>
+                </View>
+              </View>
+              </Body>
+            </CardItem>
+            <CardItem bordered>
+              <Body>
+              <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', padding: 10}}>
+                <View style={{alignSelf: 'flex-start', justifyContent: 'flex-start', alignItems: 'flex-start', width: '10%'}}> 
+                    <Text style={{color: 'gray'}}>2 </Text>
+                </View>
+                <View style={{alignSelf: 'flex-start', justifyContent: 'flex-start', alignItems: 'flex-start', width: '90%'}}>
+                <Text>
+                  Oil the Waffle maker
+                </Text>
+                </View>
+              </View>
+              </Body>
+            </CardItem>
+            <CardItem bordered>
+              <Body>
+              <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', padding: 10}}>
+                <View style={{alignSelf: 'flex-start', justifyContent: 'flex-start', alignItems: 'flex-start', width: '10%'}}> 
+                    <Text style={{color: 'gray'}}>3 </Text>
+                </View>
+                <View style={{alignSelf: 'flex-start', justifyContent: 'flex-start', alignItems: 'flex-start', width: '90%'}}>
+                <Text>
+                  Oil the Waffle maker
+                </Text>
+                </View>
+              </View>
+              </Body>
+            </CardItem>
+            <CardItem bordered>
+              <Body>
+              <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', padding: 10}}>
+                <View style={{alignSelf: 'flex-start', justifyContent: 'flex-start', alignItems: 'flex-start', width: '10%'}}> 
+                    <Text style={{color: 'gray'}}>4 </Text>
+                </View>
+                <View style={{alignSelf: 'flex-start', justifyContent: 'flex-start', alignItems: 'flex-start', width: '90%'}}>
+                <Text>
+                  Oil the Waffle maker
+                </Text>
+                </View>
+              </View>
+              </Body>
+            </CardItem>
+            {/* <CardItem footer bordered>
+              <Text>GeekyAnts</Text>
+            </CardItem> */}
+          </Card>
+    </Content>
+    {/* </Container> */}
+    
     </View>
     </View>
     <Animated.View

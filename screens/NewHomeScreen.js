@@ -31,20 +31,22 @@ class HomeScreen extends Component {
        shelf_id: 1,
        shelf_name: "pg_wick",
        subTitle: 'Start your day right',
-       Title: 'BreakFast'
+       Title: 'BreakFast',
+       img: 'R1',
      },
      {
        shelf_id: 2,
        shelf_name: "pg_wick2",
        subTitle: 'Power Vegetables',
-       Title: 'Vegetarian'
+       Title: 'Vegetarian',
+       img: 'R2',
      },
-     {
-       shelf_id: 3,
-       shelf_name: "pg_wick3",
-       subTitle: 'Start your day right',
-       Title: 'BreakFast'
-     },
+    //  {
+    //    shelf_id: 3,
+    //    shelf_name: "pg_wick3",
+    //    subTitle: 'Start your day right',
+    //    Title: 'BreakFast'
+    //  },
     //  {
     //    shelf_id: 4,
     //    shelf_name: "pg_wick"
@@ -75,6 +77,7 @@ class HomeScreen extends Component {
                                     type={element.shelf_id}
                                     name={element.Title}
                                     subHead={element.subTitle}
+                                    img={element.img}
                                     // storeName={shelfDetails.details.title}
                                     />
               </View>

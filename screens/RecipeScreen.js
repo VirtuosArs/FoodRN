@@ -35,20 +35,30 @@ class RecipeScreen extends Component {
        shelf_id: 1,
        people: 20,
        min: 20,
-       Title: 'Morning Smoothies'
+       Title: 'Morning Smoothies',
+       img: 'S1'
      },
      {
        shelf_id: 2,
        people: 21,
        min: 30,
-       Title: 'Fruity Oatmeal'
+       Title: 'Fruity Oatmeal',
+       img: 'S2'
      },
      {
        shelf_id: 3,
        people: 22,
        min: 45,
-       Title: 'Belgian Waffle'
+       Title: 'Belgian Waffle',
+       img: 'S3'
      },
+     {
+      shelf_id: 4,
+      people: 25,
+      min: 36,
+      Title: 'French Toast',
+      img: 'S4'
+    },
     //  {
     //    shelf_id: 4,
     //    shelf_name: "pg_wick"
@@ -80,6 +90,7 @@ class RecipeScreen extends Component {
                                     name={element.Title}
                                     min={element.min}
                                     people={element.people}
+                                    img={element.img}
                                     // storeName={shelfDetails.details.title}
                                     />
               </View>
