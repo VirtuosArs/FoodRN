@@ -33,21 +33,21 @@ class RecipeScreen extends Component {
     //  await this.setState({shelfDetails: this.props.navigation.state.params});
      const tempShelf = [{
        shelf_id: 1,
-       shelf_name: "pg_wick",
-       subTitle: 'Start your day right',
-       Title: 'BreakFast'
+       people: 20,
+       min: 20,
+       Title: 'Morning Smoothies'
      },
      {
        shelf_id: 2,
-       shelf_name: "pg_wick2",
-       subTitle: 'Power Vegetables',
-       Title: 'Vegetarian'
+       people: 21,
+       min: 30,
+       Title: 'Fruity Oatmeal'
      },
      {
        shelf_id: 3,
-       shelf_name: "pg_wick3",
-       subTitle: 'Start your day right',
-       Title: 'BreakFast'
+       people: 22,
+       min: 45,
+       Title: 'Belgian Waffle'
      },
     //  {
     //    shelf_id: 4,
@@ -78,7 +78,8 @@ class RecipeScreen extends Component {
               <RecipeCard width={width}
                                     type={element.shelf_id}
                                     name={element.Title}
-                                    subHead={element.subTitle}
+                                    min={element.min}
+                                    people={element.people}
                                     // storeName={shelfDetails.details.title}
                                     />
               </View>

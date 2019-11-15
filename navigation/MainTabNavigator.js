@@ -1,12 +1,13 @@
+import { Foundation, MaterialIcons } from '@expo/vector-icons';
 import React from 'react';
 import { Platform } from 'react-native';
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import TabBarIcon from '../components/TabBarIcon';
 import Colors from '../constants/Colors';
-import LinksScreen from '../screens/LinksScreen';
 // import HomeScreen from '../screens/HomeScreen';
 import HomeScreen from '../screens/NewHomeScreen';
 import RecipeScreen from '../screens/RecipeScreen';
+import RestaurantScreen from '../screens/RestaurantScreen';
 import SelectedRecipeScreen from '../screens/SelectedMenu';
 import SettingsScreen from '../screens/SettingsScreen';
 
@@ -35,31 +36,46 @@ const HomeStack = createStackNavigator(
 
 HomeStack.navigationOptions = {
   tabBarLabel: null,
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
+  tabBarIcon: ({ tintColor }) => (
+    <Foundation name="clipboard-notes" size={26} color={tintColor}/>
   ),
+  // tabBarIcon: ({ focused }) => (
+  //   <TabBarIcon
+  //     focused={focused}
+  //     name={
+  //       Platform.OS === 'ios'
+  //         ? `ios-information-circle${focused ? '' : '-outline'}`
+  //         : 'md-information-circle'
+  //     }
+  //   />
+  // ),
 };
 
 HomeStack.path = '';
 
 const LinksStack = createStackNavigator(
   {
-    Links: LinksScreen,
+    Restaurant: RestaurantScreen,
   },
-  config
+  // config,
+  {defaultNavigationOptions: {
+    headerStyle: {
+      backgroundColor: Colors.primaryColor,
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  }},
 );
 
 LinksStack.navigationOptions = {
   tabBarLabel: null,
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+  // tabBarIcon: ({ focused }) => (
+  //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+  // ),
+  tabBarIcon: ({ tintColor }) => (
+    <MaterialIcons name="restaurant" size={26} color={tintColor}/>
   ),
 };
 
@@ -90,6 +106,7 @@ const tabNavigator = createBottomTabNavigator({
     tabBarOptions: {
         activeTintColor: Colors.primaryColor,
         showLabel: false,
+        inactiveTintColor: 'grey',
   }      
 });
 

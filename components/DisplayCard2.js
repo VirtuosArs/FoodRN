@@ -4,17 +4,18 @@ import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import { withNavigation } from "react-navigation";
 
 class Home extends Component {
-    clickShelf = (id, name, storeName) => {
+    clickShelf = (id, name, min, people) => {
         const {navigate} = this.props.navigation;
-        console.log("Shelf clicked=>", id, name);
-        navigate('Recipe', {id, name, storeName});
+        console.log("Shelf clicked=>", id, name, min, people);
+        navigate('SelectRecipe', {id, name, min, people});
     }
     render() {
         return (
-            <TouchableOpacity onPress={() => this.clickShelf(this.props.type, this.props.name, this.props.subHead)}>
+            <TouchableOpacity onPress={() => this.clickShelf(this.props.type, this.props.name, this.props.min, this.props.people)}>
                 <View style={{ width: this.props.width - 30, height: this.props.width/2 - 30, borderWidth: 1.5, borderColor: '#dddddd',
                 borderRadius: 10, 
-                backgroundColor: '#000', backgroundColor: 'black', opacity: 1
+                backgroundColor: '#000', backgroundColor: 'black', opacity: 1,
+                backgroundColor: 'transparent', opacity: 0.9
                 }}>
                     <View style={{ flex: 2 }}>
                         <Image
@@ -22,23 +23,14 @@ class Home extends Component {
                             borderRadius: 10 }}
                             source={require('../assets/images/recipe/1.jpg')} />
                     </View>
-<View style={{position: 'absolute', top: 10, left: 10, right: 0, bottom: 0, justifyContent: 'flex-start', alignItems: 'flex-start',
-// backgroundColor: 'rgba(39,62,84,0.82)', backgroundColor: 'black', opacity: 0.9
-}}>
-  <Text  style={{textTransform: 'uppercase',  color: '#fff',
-//   backgroundColor: 'rgba(39,62,84,0.82)', backgroundColor: 'black', opacity: 0.2
-  }}>{this.props.subHead}</Text>
-</View>
-                    <View style={{position: 'absolute', top: 30, left: 10, right: 0, bottom: 0, justifyContent: 'flex-start', alignItems: 'flex-start',
-                    // backgroundColor: 'rgba(39,62,84,0.82)', backgroundColor: 'black', opacity: 0.9
-                    }}>
-  <Text style={{textTransform: 'capitalize', fontSize: 25, fontWeight: 'bold', color: '#fff',
-// backgroundColor: 'rgba(39,62,84,0.82)', backgroundColor: 'black', opacity: 0.3
-}}>{this.props.name}</Text>
-</View>
-                    {/* <View style={{ flex: 1, alignItems: 'flex-start', justifyContent: 'space-evenly', paddingLeft: 10 }}>
-                        <Text style={{color: '#3E50B4', fontWeight: 'bold' }}>{this.props.name}</Text>
-                    </View> */}
+                    <View style={{position: 'absolute', top: 30, left: 10, right: 0, bottom: 0, justifyContent: 'flex-start', alignItems: 'flex-start'}}>
+                        <Text style={{textTransform: 'capitalize', fontSize: 25, fontWeight: 'bold', color: '#fff',
+                        }}>{this.props.name}</Text>
+                    </View>
+                    <View style={{position: 'absolute', bottom: 20, left: 10, justifyContent: 'flex-start', alignItems: 'flex-start',}}>
+                        <Text  style={{textTransform: 'uppercase',  color: '#fff',
+                        }}>{this.props.people} people  {this.props.min} minutes</Text>
+                    </View>
                 </View>
             </TouchableOpacity>
         );
